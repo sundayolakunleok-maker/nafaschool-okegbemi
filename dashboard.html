@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NafaSchool Dashboard - School Fee Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-container">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Nafa<span>School</span></h1>
+                    </div>
+                </div>
+                <div class="school-info">
+                    <h2>Complexe Scolaire Les Palmiers</h2>
+                    <p>Pikine, Senegal | 380 Étudiants</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h3>Mariama Diallo</h3>
+                    <p>Administratrice d'école</p>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <h3>Navigation</h3>
+                <ul class="nav-links">
+                    <li><a href="#dashboard" class="active">
+                        <span class="nav-icon"><i class="fas fa-tachometer-alt"></i></span>
+                        <span>Tableau de bord</span>
+                    </a></li>
+                    <li><a href="#students">
+                        <span class="nav-icon"><i class="fas fa-users"></i></span>
+                        <span>Gestion des étudiants</span>
+                    </a></li>
+                    <li><a href="#fees">
+                        <span class="nav-icon"><i class="fas fa-money-bill-wave"></i></span>
+                        <span>Gestion des frais</span>
+                    </a></li>
+                    <li><a href="#payments">
+                        <span class="nav-icon"><i class="fas fa-receipt"></i></span>
+                        <span>Enregistrement des paiements</span>
+                    </a></li>
+                    <li><a href="#reports">
+                        <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+                        <span>Rapports & Analyses</span>
+                    </a></li>
+                    <li><a href="#settings">
+                        <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                        <span>Paramètres</span>
+                    </a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h3>Statistiques rapides</h3>
+                <div class="quick-stats">
+                    <div class="quick-stat">
+                        <span class="quick-stat-label">Taux de collecte</span>
+                        <span class="quick-stat-value">80%</span>
+                    </div>
+                    <div class="quick-stat">
+                        <span class="quick-stat-label">Frais en attente</span>
+                        <span class="quick-stat-value">20%</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h2>Tableau de bord d'administration</h2>
+                    <div class="date-display">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="currentDate">Chargement...</span>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon students">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Étudiants totaux</h3>
+                                <div class="stat-value">380</div>
+                                <div class="stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+12 cette année</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon fees">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Frais totaux du trimestre</h3>
+                                <div class="stat-value">14,250,000 FCFA</div>
+                                <div class="stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+5% vs dernier trimestre</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon pending">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Paiements en attente</h3>
+                                <div class="stat-value">2,850,000 FCFA</div>
+                                <div class="stat-change negative">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>-15% depuis la semaine dernière</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon paid">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Paiements collectés</h3>
+                                <div class="stat-value">11,400,000 FCFA</div>
+                                <div class="stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span>+20% depuis la semaine dernière</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Actions rapides</h3>
+                    <div class="action-grid">
+                        <a href="#" class="action-btn" data-action="new-student">
+                            <span class="action-icon"><i class="fas fa-user-plus"></i></span>
+                            <span class="action-text">Nouvel étudiant</span>
+                        </a>
+                        <a href="#" class="action-btn" data-action="record-payment">
+                            <span class="action-icon"><i class="fas fa-cash-register"></i></span>
+                            <span class="action-text">Enregistrer un paiement</span>
+                        </a>
+                        <a href="#" class="action-btn" data-action="generate-report">
+                            <span class="action-icon"><i class="fas fa-file-export"></i></span>
+                            <span class="action-text">Générer un rapport</span>
+                        </a>
+                        <a href="#" class="action-btn" data-action="send-reminder">
+                            <span class="action-icon"><i class="fas fa-bell"></i></span>
+                            <span class="action-text">Envoyer des rappels</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Activité récente</h3>
+                    <ul class="activity-list">
+                        <li class="activity-item">
+                            <div class="activity-icon payment">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p>Paiement enregistré pour <strong>Amadou Diallo</strong></p>
+                                <p class="activity-time">Il y a 15 minutes | 25,000 FCFA</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon registration">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p>Nouvel étudiant inscrit: <strong>Fatou Ndiaye</strong></p>
+                                <p class="activity-time">Il y a 1 heure | Classe: 6ème</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon update">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p>Informations du tuteur mises à jour pour <strong>Ousmane Sow</strong></p>
+                                <p class="activity-time">Il y a 2 heures</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon payment">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="activity-details">
+                                <p>Paiement mobile money pour <strong>Aissatou Fall</strong></p>
+                                <p class="activity-time">Il y a 3 heures | 15,000 FCFA via Orange Money</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Fee Calculator -->
+                <div class="calculator-container">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div>
+                            <h3>Calculateur de solde de frais</h3>
+                            <p class="calculator-description">
+                                Utilisez le moteur de calcul principal pour déterminer les soldes impayés. 
+                                Cette fonction utilise la même logique de calcul que le système principal.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="calculator-form">
+                        <div class="input-group">
+                            <label for="totalFee">Frais scolaires totaux (FCFA):</label>
+                            <div class="input-wrapper">
+                                <span class="currency">FCFA</span>
+                                <input type="text" id="totalFee" placeholder="Entrez le montant total des frais" value="150000">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="totalPaid">Montant total payé (FCFA):</label>
+                            <div class="input-wrapper">
+                                <span class="currency">FCFA</span>
+                                <input type="text" id="totalPaid" placeholder="Entrez le montant déjà payé" value="97500">
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button id="calculateBtn" class="btn btn-primary">
+                                <i class="fas fa-calculator"></i>
+                                Calculer le solde
+                            </button>
+                            <button id="resetBtn" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i>
+                                Réinitialiser
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="resultContainer" class="result-container" style="display: none;">
+                        <div id="resultContent"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students Section (Hidden by default) -->
+            <section id="students" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h2>Gestion des étudiants</h2>
+                </div>
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Gestion des étudiants - Bientôt disponible</h3>
+                    <p>Cette section permettra l'inscription des étudiants, la gestion des dossiers, l'attribution des classes et la visualisation des informations des tuteurs.</p>
+                </div>
+            </section>
+
+            <!-- Fees Section (Hidden by default) -->
+            <section id="fees" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h2>Gestion des frais</h2>
+                </div>
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Gestion des frais - Bientôt disponible</h3>
+                    <p>Cette section permettra de définir les barèmes de frais trimestriels, les remises, les frais supplémentaires et la gestion des structures de frais par classe.</p>
+                </div>
+            </section>
+
+            <!-- Payments Section (Hidden by default) -->
+            <section id="payments" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h2>Enregistrement des paiements</h2>
+                </div>
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Enregistrement des paiements - Bientôt disponible</h3>
+                    <p>Cette section permettra l'enregistrement des paiements en espèces et mobile money, la génération de reçus et la consultation de l'historique des paiements.</p>
+                </div>
+            </section>
+
+            <!-- Reports Section (Hidden by default) -->
+            <section id="reports" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h2>Rapports & Analyses</h2>
+                </div>
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Rapports & Analyses - Bientôt disponible</h3>
+                    <p>Cette section fournira des rapports détaillés sur les soldes impayés, les résumés de paiements, les analyses de collecte et les indicateurs de performance.</p>
+                </div>
+            </section>
+
+            <!-- Settings Section (Hidden by default) -->
+            <section id="settings" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h2>Paramètres du système</h2>
+                </div>
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Paramètres - Bientôt disponible</h3>
+                    <p>Cette section permettra de configurer les informations de l'école, les trimestres académiques, les utilisateurs et les préférences du système.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>À propos de NafaSchool</h3>
+                    <p>Un système numérique fiable conçu spécifiquement pour Complexe Scolaire Les Palmiers pour gérer les paiements des frais scolaires et réduire les erreurs dans la réconciliation des frais.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Complexe Scolaire Les Palmiers<br>
+                    Pikine, Sénégal<br>
+                    Téléphone: +221 XX XXX XX XX<br>
+                    Email: info@lespalmiers.edu.sn</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#dashboard">Tableau de bord</a></li>
+                        <li><a href="#students">Étudiants</a></li>
+                        <li><a href="#fees">Frais</a></li>
+                        <li><a href="#payments">Paiements</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 NafaSchool - Système de gestion des frais scolaires. Tous droits réservés.</p>
+                <p>Développé avec ❤️ pour Complexe Scolaire Les Palmiers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- Additional CSS for Coming Soon sections -->
+    <style>
+        .coming-soon {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+        }
+
+        .coming-soon-icon {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .coming-soon h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .quick-stats {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 1rem;
+        }
+
+        .quick-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quick-stat:last-child {
+            border-bottom: none;
+        }
+
+        .quick-stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .quick-stat-value {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+</body>
+</html>

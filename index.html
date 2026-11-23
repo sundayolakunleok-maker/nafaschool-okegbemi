@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NafaSchool - School Fee Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --light-text: #7f8c8d;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .school-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            main {
+                grid-template-columns: 250px 1fr;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--primary-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            color: white;
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            background-color: var(--secondary-color);
+        }
+
+        /* Dashboard Content */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .welcome-message {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .stat-icon.total-students {
+            background-color: var(--secondary-color);
+        }
+
+        .stat-icon.total-fees {
+            background-color: var(--accent-color);
+        }
+
+        .stat-icon.pending {
+            background-color: var(--warning-color);
+        }
+
+        .stat-icon.paid {
+            background-color: var(--accent-color);
+        }
+
+        .stat-info h3 {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--dark-text);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Calculator Section */
+        .calculator {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .calculator h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        .result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: var(--radius);
+            display: none;
+        }
+
+        .result.success {
+            background-color: #d5f4e6;
+            border: 2px solid var(--accent-color);
+            color: #155724;
+        }
+
+        .result.error {
+            background-color: #f8d7da;
+            border: 2px solid var(--danger-color);
+            color: #721c24;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 767px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .school-info {
+                text-align: center;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Nafa<span>School</span></h1>
+            </div>
+            <div class="school-info">
+                <h2>Complexe Scolaire Les Palmiers</h2>
+                <p>Pikine, Senegal | 380 Students</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <h3>Dashboard Menu</h3>
+            <ul class="nav-links">
+                <li><a href="#dashboard" class="active">Dashboard</a></li>
+                <li><a href="#students">Student Management</a></li>
+                <li><a href="#fees">Fee Management</a></li>
+                <li><a href="#payments">Payment Recording</a></li>
+                <li><a href="#reports">Reports & Analytics</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+        </aside>
+
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <h2>School Administration Dashboard</h2>
+                <div class="user-info">
+                    <p>Welcome, <strong>Mariama Diallo</strong> (Administrator)</p>
+                </div>
+            </div>
+
+            <div class="welcome-message">
+                <h2>Welcome to NafaSchool</h2>
+                <p>A reliable digital system for pupil registration, school fee management, payment recording, and automatic calculation of outstanding balances for Complexe Scolaire Les Palmiers.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon total-students">
+                        <span>👥</span>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Students</h3>
+                        <div class="stat-value">380</div>
+                        <p>Registered pupils</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon total-fees">
+                        <span>💰</span>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Term Fees</h3>
+                        <div class="stat-value">14,250,000 FCFA</div>
+                        <p>This academic term</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon pending">
+                        <span>⏳</span>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Pending Payments</h3>
+                        <div class="stat-value">2,850,000 FCFA</div>
+                        <p>20% remaining</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon paid">
+                        <span>✅</span>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Collected Payments</h3>
+                        <div class="stat-value">11,400,000 FCFA</div>
+                        <p>80% collected</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Core Features</h3>
+                    <ul class="feature-list">
+                        <li>Student Registration & Records</li>
+                        <li>Guardian Information Management</li>
+                        <li>Termly Fee Schedules</li>
+                        <li>Payment Recording (Cash & Mobile Money)</li>
+                        <li>Automatic Balance Calculation</li>
+                        <li>Receipt Generation</li>
+                        <li>Reporting & Analytics</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>System Benefits</h3>
+                    <ul class="feature-list">
+                        <li>Eliminate manual ledger errors</li>
+                        <li>Real-time payment tracking</li>
+                        <li>Accurate balance calculations</li>
+                        <li>Digital record keeping</li>
+                        <li>Mobile-responsive design</li>
+                        <li>Offline-capable (coming soon)</li>
+                        <li>Secure data management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculator">
+                <h3>Fee Balance Calculator</h3>
+                <p>Use the core calculation engine to determine outstanding balances:</p>
+                
+                <div class="input-group">
+                    <label for="totalFee">Total School Fee (FCFA):</label>
+                    <input type="number" id="totalFee" placeholder="Enter total fee amount" value="100000">
+                </div>
+
+                <div class="input-group">
+                    <label for="totalPaid">Total Amount Paid (FCFA):</label>
+                    <input type="number" id="totalPaid" placeholder="Enter amount already paid" value="75000">
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="calculateBalance()">Calculate Balance</button>
+                    <button class="btn btn-secondary" onclick="resetCalculator()">Reset</button>
+                </div>
+
+                <div id="result" class="result"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About NafaSchool</h3>
+                <p>A reliable digital system designed specifically for Complexe Scolaire Les Palmiers to manage school fee payments and reduce errors in fee reconciliation.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>Complexe Scolaire Les Palmiers<br>
+                Pikine, Senegal<br>
+                Phone: +221 XX XXX XX XX<br>
+                Email: info@lespalmiers.edu.sn</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>System Requirements</h3>
+                <p>Modern web browser with JavaScript enabled. Works on desktop, tablet, and mobile devices. Internet connection recommended for data syncing.</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2026 NafaSchool - School Fee Management System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Import the fee calculation function from our existing TypeScript library
+        async function loadFeeCalculator() {
+            try {
+                // In a real implementation, this would import the compiled TypeScript module
+                console.log('Fee calculator module loaded');
+            } catch (error) {
+                console.error('Error loading fee calculator:', error);
+            }
+        }
+
+        function calculateBalance() {
+            const totalFeeInput = document.getElementById('totalFee');
+            const totalPaidInput = document.getElementById('totalPaid');
+            const resultDiv = document.getElementById('result');
+            
+            const totalFee = parseFloat(totalFeeInput.value);
+            const totalPaid = parseFloat(totalPaidInput.value);
+            
+            // Validate inputs
+            if (isNaN(totalFee) || isNaN(totalPaid)) {
+                showResult('Please enter valid numbers for both fields.', 'error');
+                return;
+            }
+            
+            if (totalFee < 0 || totalPaid < 0) {
+                showResult('Fee and payment amounts cannot be negative.', 'error');
+                return;
+            }
+            
+            // Core calculation logic (mirroring the TypeScript function)
+            const balance = calculateOutstandingBalance(totalFee, totalPaid);
+            
+            const formatter = new Intl.NumberFormat('fr-SN', {
+                style: 'currency',
+                currency: 'XOF',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            
+            let message;
+            if (balance === 0 && totalPaid >= totalFee) {
+                message = `✅ All fees are paid! Payment of ${formatter.format(totalPaid)} covers the fee of ${formatter.format(totalFee)}.`;
+            } else if (balance === 0) {
+                message = `✅ No outstanding balance. Total fee: ${formatter.format(totalFee)}`;
+            } else {
+                message = `📊 Outstanding Balance: <strong>${formatter.format(balance)} FCFA</strong><br>
+                          Total Fee: ${formatter.format(totalFee)}<br>
+                          Total Paid: ${formatter.format(totalPaid)}<br>
+                          Remaining: ${((balance / totalFee) * 100).toFixed(1)}% of total fee`;
+            }
+            
+            showResult(message, 'success');
+        }
+
+        function calculateOutstandingBalance(totalFee, totalPaid) {
+            // Validate inputs
+            if (typeof totalFee !== "number" || typeof totalPaid !== "number") {
+                throw new Error("totalFee and totalPaid must be numbers");
+            }
+
+            if (!Number.isFinite(totalFee) || !Number.isFinite(totalPaid)) {
+                throw new Error("totalFee and totalPaid must be finite numbers");
+            }
+
+            if (totalFee < 0 || totalPaid < 0) {
+                throw new Error("totalFee and totalPaid must not be negative");
+            }
+
+            const balance = totalFee - totalPaid;
+
+            // Return 0 if balance is negative (overpayment)
+            return Math.max(0, balance);
+        }
+
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = message;
+            resultDiv.className = `result ${type}`;
+            resultDiv.style.display = 'block';
+        }
+
+        function resetCalculator() {
+            document.getElementById('totalFee').value = '100000';
+            document.getElementById('totalPaid').value = '75000';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        // Initialize the calculator when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            loadFeeCalculator();
+            // Add click handlers to navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // In a real app, this would load different dashboard sections
+                    alert(`Loading ${this.textContent} section...\n\nThis is a demonstration interface. Full implementation would include:\n- ${this.textContent} management interface\n- Data tables and forms\n- Export functionality\n- Search and filtering`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
