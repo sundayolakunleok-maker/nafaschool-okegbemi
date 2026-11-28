@@ -39,10 +39,12 @@ describe("calculateOutstandingBalance", () => {
   });
 
   it("rejects non-number input types", () => {
+    // @ts-expect-error: Testing runtime validation with invalid string input
     expect(() => calculateOutstandingBalance("100", 50)).toThrow("totalFee and totalPaid must be numbers");
   });
 
   it("rejects non-number input types for totalPaid", () => {
+    // @ts-expect-error: Testing runtime validation with invalid string input
     expect(() => calculateOutstandingBalance(100, "50")).toThrow("totalFee and totalPaid must be numbers");
   });
 });
