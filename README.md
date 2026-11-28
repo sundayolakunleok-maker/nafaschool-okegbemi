@@ -31,4 +31,17 @@ The application will not include:
 
 The main objective is to provide one reliable school fee management system that helps the administrator maintain accurate payment records and reduce errors in fee reconciliation.
 
+## 4. API (development)
+
+- `GET /health` — service health check.
+- `POST /pupils` — register a pupil and guardian.
+- `POST /payments` — record a school fee payment.
+
+> **Development only:** `POST /payments` is currently unauthenticated and has no
+> authorisation checks. It must not be treated as production-ready until
+> authentication, authorisation, rate limiting and audit logging are added.
+
+See [docs/payments-api.md](docs/payments-api.md) for the payment contract,
+installment policy, migration steps and test instructions.
+
 
